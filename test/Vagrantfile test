@@ -1,0 +1,46 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |master|
+# образ системы
+  master.vm.box = "debian/bullseye64"
+# не проверять репозиторий на наличие обновлений
+#  config.vm.box_check_update = false
+# можно подключаться по паролю
+#  master.ssh.keys_only = false
+  master.ssh.insert_key = false
+#  config.vm.network "public_network", bridge: "Realtek PCIe GBE Family Controller"
+  master.vm.network "private_network", ip: "192.168.56.110" 
+# имя пользователя
+#  config.ssh.username = "qwer"
+# пароль пользователя
+#  config.ssh.password = "12345"
+
+#  config.ssh.private_key_path = "~/.ssh/id_rsa"
+#  config.ssh.forward_agent = true
+
+
+  # система виртуализации
+  master.vm.provider "virtualbox" do |vb|
+# название ВМ
+    vb.name = "master"            
+# объем оперативной памяти    
+    vb.memory = "2048"                      
+# количество ядер процессора    
+    vb.cpus = 2                             
+end
+
+# hostname виртуальной машины
+  master.vm.hostname = "master"      
+# статический ip
+#  config.vm.network "private_network", ip: "192.168.56.109"
+#  master.vm.provision :shell, :inline => "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config; sudo systemctl restart sshd;", run: "always"
+# config.vm.provision :shell, :inline => "sudo sed -i 's/#AuthorizedKeysFile      .ssh/authorized_keys/AuthorizedKeysFile      .ssh/authorized_keys/g' /etc/ssh/sshd_config; sudo systemctl restart sshd;", run: "always"
+# ssh_pub_key = File.readlines("C:/Users/spm/.ssh/id_rsa").first.strip
+# config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_key; sudo systemctl restart sshd;", privileged: false
+# config.vm.provision "shell", path: "provision.sh"
+# config.vm.provision "file", source: "C:/Users/spm/.ssh/id_rsa.pub", destination: "/home/vagrant/.ssh/id_rsa.pub"
+# config.vm.provision :shell, :inline => "cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys", run: "always"
+# ssh_pub_key = File.readlines("C:/Users/spm/.ssh/id_rsa.pub").first.strip
+# config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_key", privileged: false
+end
