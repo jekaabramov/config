@@ -4,6 +4,8 @@
 ssh-keygen -f "/home/abramov/.ssh/known_hosts" -R "192.168.56.110"
 ssh-keygen -f "/home/abramov/.ssh/known_hosts" -R "192.168.56.111"
 
+rm /home/abramov/.ssh/insecure_private_key
+
 # копирование приватного ключа вагранта в WSL2 Debian
 cp /mnt/c/Users/spm/.vagrant.d/insecure_private_key /home/abramov/.ssh/insecure_private_key
 
