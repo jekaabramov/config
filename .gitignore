@@ -1,3 +1,16 @@
 .vagrant/
 включить_VPN
 /Packer/
+authorized_key.json
+key.json
+Terraform/5.4/.terraform.lock.hcl
+Terraform/5.4/network.tf
+Terraform/5.4/node01.tf
+Terraform/5.4/output.tf
+Terraform/5.4/provider.tf
+Terraform/5.4/terraform.tfstate
+Terraform/5.4/variables.tf
+Terraform/5.4/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.100.0/linux_amd64/CHANGELOG.md
+Terraform/5.4/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.100.0/linux_amd64/LICENSE
+Terraform/5.4/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.100.0/linux_amd64/README.md
+Terraform/5.4/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.100.0/linux_amd64/terraform-provider-yandex_v0.100.0
