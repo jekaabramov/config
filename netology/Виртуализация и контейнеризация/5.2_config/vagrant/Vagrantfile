@@ -4,7 +4,7 @@ ISO = "debian/bullseye64"
 NET = "192.168.56."
 DOMAIN = ".abramov"
 HOST_PREFIX = "server"
-INVENTORY_PATH = "../ansible/inventory"
+INVENTORY_PATH = "../ansible/ansible_5.4/inventory"
 
 servers = [
   {
@@ -31,8 +31,9 @@ Vagrant.configure(2) do |config|
         vb.name = machine[:hostname]
       end
       node.vm.provision "ansible" do |setup|
+        setup.compatibility_mode = "2.0"
         setup.inventory_path = INVENTORY_PATH
-        setup.playbook = "../ansible/provision.yml"
+        setup.playbook = "../ansible/ansible_5.4/provision.yml"
         setup.become = true
         setup.extra_vars = { ansible_user: 'vagrant' }
       end
