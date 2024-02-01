@@ -1,0 +1,30 @@
+{
+    "builders": [
+      {
+        "type":      "yandex",
+        "token":     "y0_AgAAAAAOxXBZAATuwQAAAADwICHUdinuw2ZpQhGZJLRgFurAiglCLK8",
+        "folder_id": "b1gm6gpv0a61qb7vnrc8",
+        "zone":      "ru-central1-b",
+  
+        "image_name":        "debian-11",
+        "image_family":      "debian",
+        "image_description": "abramov_netology",
+  
+        "source_image_family": "debian-11",
+        "subnet_id":           "e2lcsuiogk67nahjegsl",
+        "use_ipv4_nat":        true,
+        "disk_type":           "network-ssd",
+        "ssh_username":        "debian"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": [
+          "echo 'updating APT'",
+          "sudo apt-get update -y"
+        ]
+      }
+    ]
+  }
+  

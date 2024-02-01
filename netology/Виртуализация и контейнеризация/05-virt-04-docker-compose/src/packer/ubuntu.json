@@ -1,0 +1,12 @@
+{
+  "builders": [
+    {
+      "type": "yandex",
+      "token": "y0_AgAAAAAOxXBZAATuwQAAAADwICHUdinuw2ZpQhGZJLRgFurAiglCLK8",
+      "folder_id": "b1gm6gpv0a61qb7vnrc8",
+      "source_image_family": "debian-11",
+      "use_ipv4_nat": true,
+      "ssh_username": "debian"
+    }
+  ]
+}
