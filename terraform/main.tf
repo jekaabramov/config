@@ -13,7 +13,7 @@ data "yandex_compute_image" "centos" {
   family = var.vm_web_image_family
 }
 
-### vm_web
+### vm_vector
 
 resource "yandex_compute_instance" "platform_web" {
   name        = local.name_web
@@ -43,6 +43,38 @@ resource "yandex_compute_instance" "platform_web" {
   metadata = var.common_metadata
 
 }
+
+## vm_db
+
+resource "yandex_compute_instance" "platform_db" {
+  name        = local.name_db
+  platform_id = var.vm_db_platform_id
+ 
+  resources {
+    cores         = var.vm_db_resources["cores"]
+    memory        = var.vm_db_resources["memory"]
+    core_fraction = var.vm_db_resources["core_fraction"]
+  }
+
+boot_disk {
+  initialize_params {
+    image_id = data.yandex_compute_image.centos.image_id
+  }
+}
+
+  scheduling_policy {
+    preemptible = true
+  }
+
+  network_interface {
+    subnet_id = yandex_vpc_subnet.develop.id
+    nat       = true
+  }
+
+  metadata = var.common_metadata
+
+}
+
 
 ## vm_db
 

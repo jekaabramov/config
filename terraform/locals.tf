@@ -1,4 +1,5 @@
 locals {
-  name_web = "netology-${var.vpc_name}-v"
-  name_db = "netology-${var.vpc_name}-ch"
+  name_v = "vector"
+  name_ch = "clickhouse"
+  name_lh = "lighthouse"
 }
