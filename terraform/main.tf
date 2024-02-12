@@ -9,7 +9,7 @@ resource "yandex_vpc_subnet" "develop" {
 }
 
 
-data "yandex_compute_image" "ubuntu" {
+data "yandex_compute_image" "centos" {
   family = var.vm_web_image_family
 }
 
@@ -27,7 +27,7 @@ resource "yandex_compute_instance" "platform_web" {
 
   boot_disk {
     initialize_params {
-      image_id = data.yandex_compute_image.ubuntu.image_id
+      image_id = data.yandex_compute_image.centos.image_id
     }
   }
 
@@ -41,6 +41,7 @@ resource "yandex_compute_instance" "platform_web" {
   }
 
   metadata = var.common_metadata
+
 }
 
 ## vm_db
@@ -48,7 +49,7 @@ resource "yandex_compute_instance" "platform_web" {
 resource "yandex_compute_instance" "platform_db" {
   name        = local.name_db
   platform_id = var.vm_db_platform_id
-
+ 
   resources {
     cores         = var.vm_db_resources["cores"]
     memory        = var.vm_db_resources["memory"]
@@ -57,7 +58,7 @@ resource "yandex_compute_instance" "platform_db" {
 
 boot_disk {
   initialize_params {
-    image_id = data.yandex_compute_image.ubuntu.image_id
+    image_id = data.yandex_compute_image.centos.image_id
   }
 }
 
@@ -71,4 +72,5 @@ boot_disk {
   }
 
   metadata = var.common_metadata
+
 }
